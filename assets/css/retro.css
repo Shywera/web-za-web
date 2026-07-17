@@ -1,72 +1,153 @@
-/* Studio7 · retro lazna stranica + scroll tranzicija u moderni hero */
+/* Studio7 · prije/poslije klizac + retro izgled stare stranice */
 
-/* Scena: 320vh scrolla, unutra sticky ekran */
-.tranzicija { height: 320vh; }
-.scena {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  height: 100svh;
+/* ==== Okvir usporedbe ==== */
+.us-okvir {
+  position: relative;
+  max-width: 880px;
+  margin: 0 auto;
+  height: 460px;
+  border-radius: 18px;
   overflow: hidden;
-  background: radial-gradient(70% 90% at 50% 10%, rgba(79, 140, 255, 0.12), transparent 60%), var(--bg);
-  perspective: 1200px;
+  border: 1px solid var(--border);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+  --x: 50%;
+  touch-action: pan-y;
 }
 
-/* Retro stranica preko cijelog ekrana; scrollom se skuplja u stari monitor */
-.retro-wrap {
+.us-prije,
+.us-poslije {
   position: absolute;
   inset: 0;
   overflow: hidden;
+}
+
+/* Gornji sloj (stara stranica) rezan klizacem */
+.us-prije {
+  clip-path: inset(0 calc(100% - var(--x)) 0 0);
   background:
     repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.25) 0 2px, transparent 2px 14px),
     linear-gradient(#cfcfba, #b9b9a0);
-  transform:
-    translateY(calc(var(--p2) * -4vh))
-    rotateX(calc(var(--p2) * 32deg))
-    scale(calc(1 - var(--p2) * 0.52));
-  transform-origin: 50% 42%;
-  opacity: calc(1 - var(--p3));
-  border-radius: calc(var(--p2) * 18px);
-  box-shadow:
-    0 0 0 calc(var(--p2) * 14px) #2c2c31,
-    0 0 0 calc(var(--p2) * 18px) #46464e,
-    0 calc(var(--p2) * 60px) calc(var(--p2) * 120px) rgba(0, 0, 0, 0.6);
-  filter: saturate(calc(1 - var(--p2) * 0.4));
-  z-index: 2;
 }
 
-/* Scanline / CRT sloj koji se pali s glitchem */
-.retro-wrap::after {
-  content: "";
+/* Donji sloj: moderni mini prikaz */
+.us-poslije {
+  background:
+    radial-gradient(80% 100% at 70% 0%, rgba(79, 140, 255, 0.18), transparent 60%),
+    #0a0e1a;
+  display: grid;
+  place-items: center;
+}
+.us-moderno { text-align: center; padding: 20px; max-width: 420px; }
+.usm-brend {
+  display: block;
+  font-family: var(--font-head);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.usm-naslov {
+  display: block;
+  font-family: var(--font-head);
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+.usm-linija { display: block; height: 9px; border-radius: 6px; background: rgba(255, 255, 255, 0.12); margin: 0 auto 9px; }
+.usm-linija.w70 { width: 70%; }
+.usm-linija.w50 { width: 50%; }
+.usm-gumb {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 10px 24px;
+  border-radius: 999px;
+  background: var(--grad);
+  color: #06121c;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.usm-kartice { display: flex; gap: 10px; justify-content: center; margin-top: 22px; }
+.usm-kartice i {
+  width: 64px;
+  height: 40px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border);
+}
+
+/* Crta razdjelnica s ruckom */
+.us-crta {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--x);
+  width: 3px;
+  margin-left: -1.5px;
+  background: #fff;
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  z-index: 4;
+}
+.us-crta span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #fff;
+  color: #0a0e1a;
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+}
+
+/* Znacke godina */
+.us-znacka {
+  position: absolute;
+  top: 14px;
+  z-index: 4;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 5px 12px;
+  border-radius: 999px;
+  pointer-events: none;
+}
+.us-znacka-l { left: 14px; background: #fff; color: #333; }
+.us-znacka-d { right: 14px; background: var(--grad); color: #06121c; }
+
+/* Nevidljivi range preko cijelog okvira: radi mis i prst */
+.us-klizac {
   position: absolute;
   inset: 0;
-  background:
-    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.28) 0 1px, transparent 1px 3px),
-    radial-gradient(120% 90% at 50% 50%, transparent 60%, rgba(0, 40, 30, 0.35));
-  opacity: calc(var(--p1) * 0.75);
-  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: ew-resize;
   z-index: 5;
+  margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
 }
+.us-klizac:focus-visible ~ .us-crta,
+.us-okvir:has(.us-klizac:focus-visible) .us-crta { background: var(--a2); }
 
-/* Glitch trzanje, JS pali klasu tijekom prve faze */
-.retro-wrap.glitchano .retro-site { animation: retro-jitter 0.28s steps(2) infinite; }
-@keyframes retro-jitter {
-  0%   { transform: translateX(0) skewX(0deg); filter: none; }
-  25%  { transform: translateX(-4px) skewX(0.6deg); filter: hue-rotate(18deg); }
-  50%  { transform: translateX(3px) skewX(-0.4deg); filter: none; }
-  75%  { transform: translateX(-2px) skewX(0.3deg); filter: hue-rotate(-14deg) contrast(1.15); }
-  100% { transform: translateX(0); filter: none; }
-}
+.us-napomena { text-align: center; margin-top: 20px; color: var(--muted); font-size: 0.95rem; }
 
-/* ==== Sadrzaj lazne stare stranice ==== */
+/* ==== Retro izgled stare stranice ==== */
 .retro-site {
   font-family: "Times New Roman", Times, serif;
   color: #000;
   height: 100%;
   overflow: hidden;
-  padding: 26px 4vw 0;
+  padding: 14px 16px 0;
 }
-.retro-site a { color: #0000ee; }
 
 .retro-marquee {
   background: #ffffcc;
@@ -74,30 +155,28 @@
   overflow: hidden;
   white-space: nowrap;
   font-family: "Comic Sans MS", "Comic Sans", cursive;
-  font-size: 15px;
+  font-size: 13px;
   color: #cc0000;
   margin-bottom: 8px;
 }
-.retro-marquee span { display: inline-block; padding: 4px 0; animation: retro-marquee 14s linear infinite; }
+.retro-marquee span { display: inline-block; padding: 3px 0; animation: retro-marquee 13s linear infinite; }
 @keyframes retro-marquee {
-  from { transform: translateX(100vw); }
+  from { transform: translateX(880px); }
   to   { transform: translateX(-100%); }
 }
 
 .retro-tablica {
   width: 100%;
-  max-width: 860px;
-  margin: 0 auto;
   border-collapse: collapse;
   background: #ffffff;
   border: 3px outset #999;
 }
-.retro-tablica td { border: 1px solid #999; padding: 10px 14px; vertical-align: top; }
+.retro-tablica td { border: 1px solid #999; padding: 8px 12px; vertical-align: top; }
 
 .retro-logo-cell { text-align: center; background: #e8e8ff; }
 .retro-logo {
   font-family: "Comic Sans MS", "Comic Sans", cursive;
-  font-size: clamp(26px, 5vw, 44px);
+  font-size: clamp(20px, 3.5vw, 34px);
   font-weight: bold;
   background: linear-gradient(90deg, red, orange, yellow, green, blue, purple);
   -webkit-background-clip: text;
@@ -105,101 +184,42 @@
   -webkit-text-fill-color: transparent;
   text-shadow: 3px 3px 0 rgba(0, 0, 255, 0.25);
 }
-.retro-slogan { font-style: italic; font-size: 13px; color: #444; }
+.retro-slogan { font-style: italic; font-size: 12px; color: #444; }
 
 .retro-nav-cell { text-align: center; background: #d8d8d8; }
 .retro-btn {
   display: inline-block;
   margin: 2px;
-  padding: 4px 12px;
+  padding: 3px 10px;
   border: 2px outset #ccc;
   background: linear-gradient(#fdfdfd, #c9c9c9);
-  color: #000 !important;
-  text-decoration: none;
-  font-size: 13px;
+  color: #000;
+  font-size: 12px;
   font-family: Verdana, sans-serif;
 }
-.retro-btn:active { border-style: inset; }
 
-.retro-sadrzaj { width: 70%; font-size: 15px; }
-.retro-sadrzaj h2 { font-family: "Comic Sans MS", "Comic Sans", cursive; color: #000080; font-size: 22px; margin-bottom: 8px; }
-.retro-sadrzaj p { color: #000; margin-bottom: 10px; }
-
-.retro-slika {
-  width: 200px;
-  height: 120px;
-  border: 2px inset #999;
-  background: #ddd;
-  display: grid;
-  place-items: center;
-  font-size: 40px;
-  position: relative;
-  margin: 8px 0;
-}
-.retro-slika span { position: absolute; bottom: 2px; right: 4px; font-size: 10px; color: #666; font-family: Verdana, sans-serif; }
+.retro-sadrzaj { width: 64%; font-size: 13px; }
+.retro-sadrzaj h2 { font-family: "Comic Sans MS", "Comic Sans", cursive; color: #000080; font-size: 18px; margin-bottom: 6px; }
+.retro-sadrzaj p { color: #000; margin-bottom: 8px; }
 
 .retro-mig { animation: retro-blink 1s steps(1) infinite; font-weight: bold; }
 @keyframes retro-blink { 50% { opacity: 0; } }
 
-.retro-sidebar { background: #f4f4e8; font-size: 12px; font-family: Verdana, sans-serif; }
-.retro-box { border: 2px ridge #999; background: #fff; padding: 8px; margin-bottom: 10px; }
-.retro-box hr { margin: 6px 0; }
-.retro-novo { color: #fff; background: #cc0000; padding: 0 4px; font-size: 10px; animation: retro-blink 0.8s steps(1) infinite; }
+.retro-sidebar { background: #f4f4e8; font-size: 11px; font-family: Verdana, sans-serif; }
+.retro-box { border: 2px ridge #999; background: #fff; padding: 6px; margin-bottom: 8px; }
+.retro-box hr { margin: 5px 0; }
+.retro-novo { color: #fff; background: #cc0000; padding: 0 4px; font-size: 9px; animation: retro-blink 0.8s steps(1) infinite; }
 .retro-brojac { text-align: center; }
-.retro-brojac b { font-family: "Courier New", monospace; background: #000; color: #33ff33; padding: 2px 8px; display: inline-block; margin-top: 4px; }
+.retro-brojac b { font-family: "Courier New", monospace; background: #000; color: #33ff33; padding: 2px 8px; display: inline-block; margin-top: 3px; }
 
-.retro-footer { text-align: center; font-size: 11px; background: #d8d8d8; font-family: Verdana, sans-serif; }
-
-/* ==== Pitanje preko stare stranice ==== */
-.pitanje {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 7vh;
-  text-align: center;
-  z-index: 6;
-  opacity: var(--pq);
-  pointer-events: none;
-}
-.pitanje-cta { display: inline-flex; margin-top: 16px; pointer-events: auto; }
-.pitanje[data-skriveno] .pitanje-cta { pointer-events: none; }
-.pitanje p {
-  display: inline-block;
-  font-family: var(--font-head);
-  font-size: clamp(1.3rem, 3.4vw, 2.1rem);
-  font-weight: 700;
-  color: #fff;
-  background: rgba(5, 8, 16, 0.82);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  padding: 16px 30px;
-  border-radius: 16px;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
-}
-.pitanje-hint {
-  display: block;
-  margin-top: 12px;
-  color: #fff;
-  font-size: 0.85rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
-}
-.pitanje-hint i { display: block; font-style: normal; font-size: 1.3rem; animation: skok 1.4s ease-in-out infinite; }
-@keyframes skok { 50% { transform: translateY(7px); } }
-
-/* ==== Staticni prikaz: bez animacija (reduced motion ili bez JS-a) ==== */
-.staticno .tranzicija { height: auto; }
-.staticno .scena { position: static; height: auto; overflow: visible; }
-.staticno .retro-wrap { position: relative; transform: none; opacity: 1; border-radius: 0; box-shadow: none; filter: none; }
-.staticno .retro-wrap::after { display: none; }
-.staticno .retro-site { height: auto; padding-bottom: 26px; animation: none; }
-.staticno .pitanje { position: relative; opacity: 1; padding: 26px 0 34px; bottom: auto; pointer-events: auto; }
-.staticno .hero-scena { position: relative; opacity: 1; transform: none; pointer-events: auto; min-height: auto; padding: 90px 20px; }
-.staticno .retro-marquee span, .staticno .retro-mig, .staticno .retro-novo, .staticno .pitanje-hint i { animation: none; }
+.retro-footer { text-align: center; font-size: 10px; background: #d8d8d8; font-family: Verdana, sans-serif; }
 
 @media (max-width: 720px) {
-  .retro-sadrzaj { width: auto; font-size: 13px; }
+  .us-okvir { height: 400px; }
   .retro-sidebar { display: none; }
-  .retro-site { padding: 14px 10px 0; }
+  .retro-sadrzaj { width: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .retro-marquee span, .retro-mig, .retro-novo { animation: none; }
 }

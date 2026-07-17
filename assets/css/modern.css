@@ -12,10 +12,6 @@
   --grad: linear-gradient(100deg, var(--a1), var(--a2) 55%, var(--a3));
   --font-head: "Space Grotesk", system-ui, sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
-  --p1: 0;
-  --p2: 0;
-  --p3: 0;
-  --pq: 1;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -214,23 +210,64 @@ a { color: inherit; }
 [data-delay="2"] { transition-delay: 0.2s; }
 [data-delay="3"] { transition-delay: 0.3s; }
 
-/* Hero u sceni */
-.hero-scena {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  padding: 20px;
-  opacity: var(--p3);
-  transform: translateY(calc((1 - var(--p3)) * 5vh)) scale(calc(0.96 + var(--p3) * 0.04));
-  pointer-events: none;
-  z-index: 4;
+/* Gornja traka */
+.vrh {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(7, 9, 15, 0.82);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
 }
-.hero-scena.aktivno { pointer-events: auto; }
-.hero-sadrzaj { max-width: 760px; }
-.hero-sadrzaj .lead { font-size: 1.12rem; margin: 18px auto 30px; max-width: 620px; }
+.vrh-red { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; padding-bottom: 12px; }
+.vrh-brend { font-family: var(--font-head); font-weight: 700; font-size: 1.2rem; letter-spacing: 0.02em; }
+.vrh-brend b {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.btn-mali { padding: 9px 20px; font-size: 0.9rem; }
+
+/* Hero */
+.hero { position: relative; text-align: center; padding: 96px 0 70px; overflow: hidden; }
+.hero-sjaj {
+  position: absolute;
+  inset: -20% -10% auto;
+  height: 70%;
+  background: radial-gradient(50% 60% at 50% 30%, rgba(79, 140, 255, 0.22), transparent 70%);
+  pointer-events: none;
+}
+.hero-sadrzaj { position: relative; max-width: 780px; margin: 0 auto; }
+.hero-sadrzaj .lead { font-size: 1.13rem; margin: 18px auto 30px; max-width: 640px; }
 .cta-red { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.hero-trust {
+  list-style: none;
+  display: flex;
+  gap: 22px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 28px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+/* Oznaka i CTA na paketima */
+.paket { display: flex; flex-direction: column; }
+.paket-znak {
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--grad);
+  color: #06121c;
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+.paket ul { margin-bottom: 18px; }
+.paket-cta { margin-top: auto; justify-content: center; }
 
 /* Responzivno */
 @media (max-width: 980px) {
