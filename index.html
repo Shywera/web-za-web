@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studio7 | Moderne web stranice za male firme</title>
+  <meta name="description" content="Moderne web stranice za male firme i obrtnike. Dizajn po mjeri, izrada brzo, fiksna cijena i rok poznati unaprijed. Prvi dojam koji prodaje." />
+  <meta name="theme-color" content="#07090f" />
+  <meta property="og:title" content="Studio7 | Moderne web stranice za male firme" />
+  <meta property="og:description" content="Skrolajte i pogledajte razliku: stara stranica iz 2009. protiv modernog weba. Dizajn po mjeri, fiksna cijena i rok." />
+  <meta property="og:type" content="website" />
+  <!-- TODO: zamijeniti kad stigne prava domena -->
+  <link rel="canonical" href="https://shywera.github.io/web-za-web/" />
+  <meta property="og:url" content="https://shywera.github.io/web-za-web/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E7%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/css/modern.css" />
+  <link rel="stylesheet" href="assets/css/retro.css" />
+  <noscript>
+    <style>
+      .tranzicija { height: auto !important; }
+      .scena { position: static !important; height: auto !important; }
+      .retro-wrap { position: relative !important; transform: none !important; opacity: 1 !important; }
+      .hero-scena { position: relative !important; opacity: 1 !important; transform: none !important; pointer-events: auto !important; min-height: auto !important; padding: 80px 20px; }
+      .pitanje { position: relative !important; opacity: 1 !important; padding: 30px 20px; }
+    </style>
+  </noscript>
+</head>
+<body>
+
+  <!-- ==== TRANZICIJA: stara stranica koja se scrollom pretvara u modernu ==== -->
+  <div class="tranzicija" id="tranzicija">
+    <div class="scena">
+
+      <!-- Namjerno loša "stara" stranica (dekoracija, čitačima ekrana skrivena) -->
+      <div class="retro-wrap" id="retroWrap" aria-hidden="true">
+        <div class="retro-site">
+          <div class="retro-marquee"><span>☆☆☆ Dobrodošli na našu internet stranicu!!! NOVO!!! Pogledajte našu ponudu!!! Radno vrijeme: pon-pet 8-16h ☆☆☆</span></div>
+          <table class="retro-tablica">
+            <tr>
+              <td class="retro-logo-cell" colspan="2">
+                <div class="retro-logo">VAŠA FIRMA d.o.o.</div>
+                <div class="retro-slogan">~ Kvaliteta i povjerenje od 1995 ~</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="retro-nav-cell" colspan="2">
+                <a class="retro-btn" href="#">Početna</a>
+                <a class="retro-btn" href="#">O nama</a>
+                <a class="retro-btn" href="#">Galerija</a>
+                <a class="retro-btn" href="#">Knjiga gostiju</a>
+                <a class="retro-btn" href="#">Kontakt</a>
+              </td>
+            </tr>
+            <tr>
+              <td class="retro-sadrzaj">
+                <h2>Dobro došli!</h2>
+                <p>Poštovani posjetitelju, dobro došli na naše web stranice. Ovdje možete
+                pronaći sve informacije o našoj firmi, našim uslugama i proizvodima.</p>
+                <p>✔ Povoljne cijene!!!<br />✔ Dugogodišnje iskustvo<br />✔ Besplatna dostava (za narudžbe iznad 500 kn)</p>
+                <div class="retro-slika">🏢<span>slika1.jpg</span></div>
+                <p class="retro-mig">🚧 Stranica u izradi 🚧</p>
+              </td>
+              <td class="retro-sidebar">
+                <div class="retro-box">
+                  <b>NOVOSTI <span class="retro-novo">NOVO!</span></b>
+                  <hr />
+                  12.03.2011.<br />Nova web stranica je online!!!
+                  <hr />
+                  05.01.2010.<br />Sretna Nova godina svim našim kupcima!
+                </div>
+                <div class="retro-box retro-brojac">
+                  Broj posjeta:<br /><b>004217</b>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="retro-footer" colspan="2">
+                Zadnja izmjena: 12.03.2011. | Webmaster | Najbolje se vidi u Internet Exploreru 6 (800x600)
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Pitanje preko stare stranice -->
+      <div class="pitanje" id="pitanje">
+        <p>Imate li i vi ovakvu stranicu?</p>
+        <span class="pitanje-hint">skrolajte<i>↓</i></span>
+      </div>
+
+      <!-- Moderni hero koji ulazi na kraju tranzicije -->
+      <section class="hero-scena" id="heroScena">
+        <div class="hero-sadrzaj">
+          <span class="eyebrow">Ovako izgleda web u 2026.</span>
+          <!-- TODO: "Studio7" je radni naziv, lako zamijeniti -->
+          <h1>Moderna stranica<br /><span class="gradient-text">koja prodaje.</span></h1>
+          <p class="lead">Dizajniramo i gradimo brze web stranice za male firme i obrtnike.
+          Fiksna cijena i rok, poznati prije početka. Upravo ste vidjeli razliku koju radimo.</p>
+          <div class="cta-red">
+            <a href="#kontakt" class="btn btn-primary">Zatražite ponudu</a>
+            <a href="#primjer" class="btn btn-ghost">Pogledajte primjer</a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <main class="moderno">
+
+    <!-- ==== ŠTO DOBIVATE ==== -->
+    <section class="sekcija" id="dobivate">
+      <div class="okvir">
+        <div class="naslov-sekcije" data-reveal>
+          <span class="eyebrow">Što dobivate</span>
+          <h2>Stranica kakvu biste sami poželjeli</h2>
+        </div>
+        <div class="mreza mreza-3">
+          <article class="kartica" data-reveal>
+            <span class="kartica-ikona">✏️</span>
+            <h3>Dizajn po mjeri</h3>
+            <p>Ne kupujemo šablonu. Dizajn se radi za vašu firmu, vaše boje i vaše kupce, kao ova stranica koju gledate.</p>
+          </article>
+          <article class="kartica" data-reveal data-delay="1">
+            <span class="kartica-ikona">⚡</span>
+            <h3>Brzina učitavanja</h3>
+            <p>Stranica se otvara odmah, bez teških dodataka. Google voli brze stranice, a kupci još više.</p>
+          </article>
+          <article class="kartica" data-reveal data-delay="2">
+            <span class="kartica-ikona">📱</span>
+            <h3>Mobilni prvo</h3>
+            <p>Većina posjetitelja dolazi s mobitela, pa dizajn prvo radimo za mali ekran, a onda za veliki.</p>
+          </article>
+          <article class="kartica" data-reveal>
+            <span class="kartica-ikona">🔍</span>
+            <h3>SEO osnove uključene</h3>
+            <p>Naslovi, opisi i struktura posloženi da vas Google pronađe kad netko traži ono što radite.</p>
+          </article>
+          <article class="kartica" data-reveal data-delay="1">
+            <span class="kartica-ikona">💶</span>
+            <h3>Bez mjesečnih troškova</h3>
+            <p>Ovakva stranica može na besplatan hosting. Plaćate izradu i domenu (oko 10 € godišnje), ne najam.</p>
+          </article>
+          <article class="kartica" data-reveal data-delay="2">
+            <span class="kartica-ikona">🔑</span>
+            <h3>Sve je vaše</h3>
+            <p>Domena, stranica i kod ostaju u vašem vlasništvu. Nema zaključavanja kod nas ni skrivenih uvjeta.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==== KAKO RADIMO ==== -->
+    <section class="sekcija" id="proces">
+      <div class="okvir">
+        <div class="naslov-sekcije" data-reveal>
+          <span class="eyebrow">Kako radimo</span>
+          <h2>Tri koraka, bez iznenađenja</h2>
+        </div>
+        <ol class="koraci">
+          <li class="korak" data-reveal>
+            <span class="korak-broj">1</span>
+            <h3>Kratak razgovor</h3>
+            <p>15 minuta telefonom ili uživo: što radite, za koga i što stranica treba postići.</p>
+          </li>
+          <li class="korak" data-reveal data-delay="1">
+            <span class="korak-broj">2</span>
+            <h3>Prijedlog i fiksna ponuda</h3>
+            <p>Dobijete prijedlog izgleda te točnu cijenu s rokom. Bez skrivenih stavki i naplate po satu.</p>
+          </li>
+          <li class="korak" data-reveal data-delay="2">
+            <span class="korak-broj">3</span>
+            <h3>Izrada i objava</h3>
+            <p>Stranicu izradimo, vi je pregledate i tražite izmjene, pa ide online na vašu domenu.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ==== PRIMJER ==== -->
+    <section class="sekcija" id="primjer">
+      <div class="okvir">
+        <div class="primjer-blok" data-reveal>
+          <div class="primjer-tekst">
+            <span class="eyebrow">Prvi primjer</span>
+            <h2>kai-sol.com</h2>
+            <p>Poslovnu stranicu firme KAI-SOL dizajnirali smo i izgradili sami: tamni
+            tehnološki dizajn, pet stranica, animacije i brzina učitavanja bez kompromisa.
+            Otvorite je i procijenite sami.</p>
+            <a href="https://kai-sol.com" target="_blank" rel="noopener" class="btn btn-primary">Otvori kai-sol.com ↗</a>
+          </div>
+          <a class="primjer-mock" href="https://kai-sol.com" target="_blank" rel="noopener" aria-label="Otvori kai-sol.com">
+            <span class="mock-vrh"><i></i><i></i><i></i><b>kai-sol.com</b></span>
+            <span class="mock-tijelo">
+              <span class="mock-brand">KAI-SOL</span>
+              <span class="mock-linija w60"></span>
+              <span class="mock-linija w80"></span>
+              <span class="mock-gumb"></span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==== CIJENE ==== -->
+    <section class="sekcija" id="cijene">
+      <div class="okvir">
+        <div class="naslov-sekcije" data-reveal>
+          <span class="eyebrow">Cijene</span>
+          <h2>Fiksno i poznato unaprijed</h2>
+          <p>Cijena i rok pišu u ponudi prije nego što krenemo. Nema naplate po satu ni naknadnih stavki.</p>
+        </div>
+        <div class="mreza mreza-3 paketi">
+          <!-- TODO: vlasnik postavlja cijene -->
+          <article class="kartica paket" data-reveal>
+            <h3>Landing stranica</h3>
+            <div class="paket-cijena">od ___ €</div>
+            <p>Jedna stranica koja predstavlja firmu i skuplja upite. Gotova brzo.</p>
+            <ul>
+              <li>Dizajn po mjeri</li>
+              <li>Kontakt sekcija s upitom na klik</li>
+              <li>Objava na vašoj domeni</li>
+            </ul>
+          </article>
+          <article class="kartica paket istaknut" data-reveal data-delay="1">
+            <h3>Poslovna stranica</h3>
+            <div class="paket-cijena">od ___ €</div>
+            <p>Do 5 podstranica: početna, usluge, o nama, galerija, kontakt.</p>
+            <ul>
+              <li>Sve iz paketa Landing</li>
+              <li>SEO osnove za Google</li>
+              <li>Upute za samostalne sitne izmjene</li>
+            </ul>
+          </article>
+          <article class="kartica paket" data-reveal data-delay="2">
+            <h3>Po dogovoru</h3>
+            <div class="paket-cijena">upit</div>
+            <p>Trebate nešto posebno? Višejezičnost, katalog proizvoda, rezervacije.</p>
+            <ul>
+              <li>Razgovor o opsegu</li>
+              <li>Fiksna ponuda nakon dogovora</li>
+              <li>Isti princip: cijena i rok unaprijed</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==== FAQ ==== -->
+    <section class="sekcija" id="faq">
+      <div class="okvir">
+        <div class="naslov-sekcije" data-reveal>
+          <span class="eyebrow">Česta pitanja</span>
+          <h2>Ono što svi pitaju</h2>
+        </div>
+        <div class="mreza mreza-2 pitanja">
+          <div class="faq-stavka" data-reveal>
+            <h3>Koliko traje izrada?</h3>
+            <p>Landing tipično tjedan dana od kada dobijemo materijale, poslovna stranica dva do tri tjedna. Točan rok piše u ponudi.</p>
+          </div>
+          <div class="faq-stavka" data-reveal data-delay="1">
+            <h3>Što trebamo pripremiti?</h3>
+            <p>Tekstove ili barem natuknice, logo ako ga imate i nekoliko fotografija. Ako nemate ništa od toga, pomažemo složiti sadržaj.</p>
+          </div>
+          <div class="faq-stavka" data-reveal data-delay="2">
+            <h3>Možemo li kasnije mijenjati stranicu?</h3>
+            <p>Da. Manje izmjene radimo brzo po dogovoru, a kako je stranica u vašem vlasništvu, može je održavati i bilo tko drugi.</p>
+          </div>
+          <div class="faq-stavka" data-reveal data-delay="3">
+            <h3>Imamo domenu i staru stranicu. Što s njima?</h3>
+            <p>Domenu zadržavate, novu stranicu objavimo na nju. Stara stranica se arhivira i ništa se ne gubi.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==== KONTAKT ==== -->
+    <section class="sekcija" id="kontakt">
+      <div class="okvir">
+        <div class="kontakt-blok" data-reveal>
+          <h2>Zatražite ponudu</h2>
+          <p>Pošaljite nam par rečenica o firmi i što stranica treba raditi.
+          Odgovaramo u roku 24 h radnim danom, s konkretnim pitanjima i prvim prijedlogom.
+          Upit ništa ne košta i ne obvezuje.</p>
+          <!-- TODO: zamijeniti emailom novog brenda -->
+          <a class="btn btn-primary btn-velik" href="mailto:info@kai-sol.com?subject=Upit%20za%20web%20stranicu">Pošaljite upit ✉</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="podnozje">
+    <div class="okvir podnozje-red">
+      <!-- TODO: "Studio7" je radni naziv -->
+      <span>Studio7 · Moderne web stranice za male firme · © <span id="godina">2026</span></span>
+      <a href="#tranzicija">Na vrh ↑</a>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
