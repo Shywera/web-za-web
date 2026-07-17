@@ -155,12 +155,14 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 6vh;
+  bottom: 7vh;
   text-align: center;
   z-index: 6;
   opacity: var(--pq);
   pointer-events: none;
 }
+.pitanje-cta { display: inline-flex; margin-top: 16px; pointer-events: auto; }
+.pitanje[data-skriveno] .pitanje-cta { pointer-events: none; }
 .pitanje p {
   display: inline-block;
   font-family: var(--font-head);
